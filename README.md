@@ -1,5 +1,8 @@
-Appetite AI Voice Chat Bot
-REQUIREMENTS
+#Appetite AI Voice Chat Bot
+
+---
+
+##Objectives
  1. Create a voice chat bot that will serve as an automated restaurant host
  2. Restaurants will feed in menu, logistics, reservation/waitlist system, users can verbally ask for any information
  3. UI GOAL: nothing serious, all software
