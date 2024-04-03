@@ -9,4 +9,4 @@
  4. Find Voice AI infrustructure API - VAPI AI
  5. Choose service providers for transcription, model, voice
  6. Somehow allow restaurants to upload their data/interact with language model
- 7. TBD
+ 7. TBD...
