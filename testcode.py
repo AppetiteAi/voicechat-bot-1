@@ -1,6 +1,7 @@
 from langchain_openai import ChatOpenAI  # Importing the ChatOpenAI class from the langchain_openai package
 from dotenv import load_dotenv
 import os
+import sys
 
 try:
     load_dotenv()
@@ -14,7 +15,8 @@ try:
 
     chat_model = ChatOpenAI(openai_api_key=api_key)
 
-    result = chat_model.invoke("Hi")
+    query = sys.argv[1]
+    result = chat_model.invoke(query)
     print(result.content)
 except Exception as e:
     print(f"An error occurred: {e}")
