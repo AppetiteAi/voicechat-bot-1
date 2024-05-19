@@ -1,22 +1,20 @@
-from langchain_openai import ChatOpenAI  # Importing the ChatOpenAI class from the langchain_openai package
 from dotenv import load_dotenv
-import os
-import sys
+from utils.env_utils import OPEN_AI_KEY, OPEN_AI_MODEL, MONGO_ADMIN_USER, MONGO_ADMIN_PASSWORD, MONGO_URL, MONGO_DB
 
-try:
-    load_dotenv()
-    api_key = os.getenv("OPENAI_API_KEY")
+# Print out the values to verify they are correct
+print("OpenAI Key:", OPEN_AI_KEY)
+print("OpenAI Model:", OPEN_AI_MODEL)
+print("MongoDB User:", MONGO_ADMIN_USER)
+print("MongoDB Password:", MONGO_ADMIN_PASSWORD)
+print("MongoDB URL:", MONGO_URL)
+print("MongoDB Database:", MONGO_DB)
 
-    # Testing API Key
-    #print("API Key:", api_key) 
+# Testing the MongoDBHandler class
 
-    if not api_key:
-        raise ValueError("No API key found. Please check your .env file or environment variables.")
+from db.mongodbhandler import MongoDBHandler
 
-    chat_model = ChatOpenAI(openai_api_key=api_key)
-
-    query = sys.argv[1]
-    result = chat_model.invoke(query)
-    print(result.content)
-except Exception as e:
-    print(f"An error occurred: {e}")
+mongo_handler = MongoDBHandler()
+mongo_handler2 = MongoDBHandler()
+mongo_handler3 = MongoDBHandler()
+assert mongo_handler is mongo_handler2 and mongo_handler2 is mongo_handler3
+print("MongoDBHandler instance created successfully")
