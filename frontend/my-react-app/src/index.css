@@ -5,9 +5,92 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(to right, rgb(110, 136, 240), rgb(28, 58, 158) );
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.background-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Centers vertically in the viewport */
+  justify-content: center;  /* Centers horizontally in the viewport */
+  text-align: center;
+  padding: 10px;
+}
+
+.card {
+  text-align: center;  /* Aligns text and content in the center of the card */
+  background-image: linear-gradient(to right, rgb(110, 136, 240), rgb(28, 58, 158) );
+  padding: 20px;
+  border-radius: 10px;  /* Optional: Rounds the corners of the card */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* Optional: Adds subtle shadow to the card */
+  width: 1000px;
+  height: 650px;
+  border: 10px solid white;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-bar-container {
+  display: flex;
+  width: 95%;
+  padding-top: 380px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+}
+
+.search-input {
+  flex-grow: 1;
+  border: 2px solid #ccc;
+  border-right: none;
+  padding: 10px;
+  height: 40px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+
+ 
+}
+
+.send-button {
+  width: 10px;
+  height: 44px;  
+  border: 2px solid #ccc;
+  background-color: white;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  outline: none;
+  padding: 10px;
+
+}
+
+.profile img{
+  width:100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-name{
+  margin-top: -20px;
+}
+
+.pressme{
+  width: 60px;
+  height: 63px;
+  border: 2px solid #ccc;
+  background-color: #f2bc54;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  outline: none;
+  margin-left: 10px;
 }
