@@ -13,6 +13,10 @@ function App() {
   );
 }
 
+function getRestaurantData() {
+  //Call the endpoint that you just made
+}
+
 function handleButtonClick() {
   vapi.start("47c7afde-9078-4060-957a-2b542e478733");
 }
