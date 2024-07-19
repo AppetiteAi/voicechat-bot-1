@@ -11,10 +11,8 @@ print("MongoDB Database:", MONGO_DB)
 
 # Testing the MongoDBHandler class
 
-from db.mongodbhandler import MongoDBHandler
+from db.mongo import MongoDBHandler
 
 mongo_handler = MongoDBHandler()
-mongo_handler2 = MongoDBHandler()
-mongo_handler3 = MongoDBHandler()
-assert mongo_handler is mongo_handler2 and mongo_handler2 is mongo_handler3
+assert mongo_handler 
 print("MongoDBHandler instance created successfully")

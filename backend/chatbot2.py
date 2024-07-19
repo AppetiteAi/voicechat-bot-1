@@ -1,34 +1,39 @@
 # chat.py
 from utils.env_utils import OPEN_AI_KEY, OPEN_AI_MODEL
-from db.mongodbhandler import MongoDBHandler
-from openai import ChatCompletion
+from db.mongo import MongoDBHandler
+from openai import OpenAI
 
-def fetch_context(database, query):
-    collection = database['your_collection_name']  # Adjust the collection name
-    document = collection.find_one({"keyword": query})
-    return document['context'] if document else query  # Fallback to original query if no context
+def mongo_query():
+    restaurantCollection = MongoDBHandler()
+    query = {'link_path': '/irvins-scrumptious-eats'}
+    restaurant = restaurantCollection.find_one(query)
+    return restaurant
 
 def query_openai(prompt):
+    client = OpenAI(
+        api_key=OPEN_AI_KEY
+    )
     try:
-        response = ChatCompletion.create(
+        response = client.chat.completions.create(
             model=OPEN_AI_MODEL,
             messages=[
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": prompt}
             ],
-            api_key=OPEN_AI_KEY
         )
-        return response.choices[0].message['content']
+        return response.choices[0].message.content
     except Exception as e:
-        print(f"Error querying OpenAI: {e}")
+        return (f"Error querying OpenAI: {e}")
 
 def main():
-    db_handler = MongoDBHandler()
-    database = db_handler.get_database()
-    user_input = "hello"  # Example user query
-    context = fetch_context(database, user_input)
-    response = query_openai(context)
-    print("Response from OpenAI:", response)
+    restaurant = mongo_query()
+    user_input = "Tell me what time this restaurant is open on Wednesdays at its flavor street site and a recommendation a menu item if I like hot and spicy foods"  # Example user query
+    combined_query = f"{user_input} {restaurant}"
+    response = query_openai(combined_query)
+
+    #For current testing, prints the user input and AI response
+    print("User input:", user_input)
+    print("AI Response:", response) 
 
 if __name__ == "__main__":
     main()
