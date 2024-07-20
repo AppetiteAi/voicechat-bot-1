@@ -11,8 +11,16 @@ print("MongoDB Database:", MONGO_DB)
 
 # Testing the MongoDBHandler class
 
-from db.mongo import MongoDBHandler
+from db.mongodb_handler import MongoDBHandler
 
 mongo_handler = MongoDBHandler()
-assert mongo_handler 
+target_restaurant = (
+    mongo_handler
+    .get_database()
+    .get_collection("Restaurants")
+    .find_one({"link_path": "/irvins-scrumptious-eats"})
+)
+print(target_restaurant)
+# query = {'link_path': '/irvins-scrumptious-eats'} #place a restaurant name here
+    # restaurant = restaurants.find_one(query)
 print("MongoDBHandler instance created successfully")

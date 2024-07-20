@@ -1,6 +1,6 @@
 # chat.py
 from utils.env_utils import OPEN_AI_KEY, OPEN_AI_MODEL
-from db.mongo import MongoDBHandler
+from db.mongodb_handler import MongoDBHandler
 from openai import OpenAI
 
 def mongo_query():
