@@ -4,7 +4,7 @@ const RestaurantDropdown = ({ selectedRestaurant, onSelectRestaurant }) => {
     const [restaurantNames, setRestaurantNames] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8000/restaurant/list_restaurants')
+        fetch('http://127.0.0.1:8000/restaurant/list_restaurants')
             .then(response => response.json())
             .then(data => setRestaurantNames(data.restaurant_names))
             .catch(error => console.error('Error fetching restaurant names:', error));
