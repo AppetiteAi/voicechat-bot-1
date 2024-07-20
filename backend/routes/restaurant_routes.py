@@ -31,3 +31,16 @@ def get_information():
     target_restaurant.pop('name', None)
 
     return jsonify({"restaurant": target_restaurant}), 200
+
+@restaurant_bp.route("/list_restaurants", methods=["GET"]) #Lists all restaurant names in the database
+def list_restaurants():
+    mongo_handler = MongoDBHandler()
+    restaurants = (
+        mongo_handler.get_database()
+        .get_collection("Restaurants")
+        .find({}, {"name": 1, "_id": 0})
+    )
+
+    restaurant_names = [restaurant["name"] for restaurant in restaurants]
+
+    return jsonify({"restaurant_names": restaurant_names}), 200
