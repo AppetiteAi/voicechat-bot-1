@@ -1,12 +1,14 @@
 import React from 'react';
 import Vapi from "@vapi-ai/web";
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 const vapi = new Vapi("05a15f00-9fd2-4923-a02b-39cd5723c558");
 
 const FetchButton = ({ selectedRestaurant }) => {
   const handleButtonClick = () => {
     if (selectedRestaurant) {
       fetch(`http://127.0.0.1:8000/restaurant/get_information?name=${selectedRestaurant}`)
+      // fetch(`${BACKEND_URL}restaurant/get_information?name=${selectedRestaurant}`)
         .then(response => response.json())
         .then(data => {
           if (data.error) {

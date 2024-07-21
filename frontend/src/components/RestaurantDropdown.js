@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
+const BACKENDURL = process.env.NEXT_PUBLIC_BACKEND_URL;
+
 const RestaurantDropdown = ({ selectedRestaurant, onSelectRestaurant }) => {
     const [restaurantNames, setRestaurantNames] = useState([]);
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/restaurant/list_restaurants')
+        // fetch(`${BACKENDURL}/restaurant/list_restaurants`)
+        fetch(`http://127.0.0.1:8000/restaurant/list_restaurants`)
             .then(response => response.json())
             .then(data => setRestaurantNames(data.restaurant_names))
             .catch(error => console.error('Error fetching restaurant names:', error));
@@ -12,6 +15,8 @@ const RestaurantDropdown = ({ selectedRestaurant, onSelectRestaurant }) => {
 
     const handleSelectChange = (event) => {
         onSelectRestaurant(event.target.value);
+        console.log(BACKENDURL);
+        console.log('Environment Variables:', process.env);
     };
 
     return (
